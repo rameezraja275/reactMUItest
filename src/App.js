@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { ThemeProvider } from "@material-ui/styles";
+import theme from "./theme";
+import { ChildView } from "./Pages";
+import chaloopsMedium from './font/9719beab12b9e44b85432bb843ad1d55.ttf';
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Layout from './Components/Layout'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        @font-face {
+          font-family: 'Chaloops W00 Reg';
+          font-style: normal;
+          font-weight: 500;
+          src: url('./${chaloopsMedium}');
+        }`}
+        }
+      />
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Layout>
+          <ChildView />
+        </Layout>
+      </ThemeProvider>
+    </>
   );
-}
+};
 
 export default App;
